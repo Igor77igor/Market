@@ -7,9 +7,7 @@ public class Market {
 		ResultSet rset = null;
 
 		try {
-			conn = DriverManager
-					.getConnection(
-							"jdbc:mysql://localhost:3306/market?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/market?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 							"student", "student");
 
 			stmt = conn.createStatement();
