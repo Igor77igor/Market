@@ -14,19 +14,6 @@ public class Market {
 
 			stmt = conn.createStatement();
 
-			// String
-			// strInsert="insert into market values (1006,'kava','Franck','21.33','40')";
-			// System.out.println("Zahtjev za update je " + strInsert);
-			// int countInserted=stmt.executeUpdate(strInsert);
-			// System.out.println(countInserted + " proizvod ubačen.\n");
-			// System.out.println();
-
-			// String sqlDelete="delete from market where id>=1006";
-			// System.out.println("Zahtjev prema SQLu je: " + sqlDelete);
-			// int countDeleted = stmt.executeUpdate(sqlDelete);
-			// System.out.println(countDeleted + " proizvod obrisan.\n");
-			// System.out.println();
-
 			String strSelect = "select*from market";
 			System.out.println("Zahtjev prema SQLu je: " + strSelect);
 			System.out.println();
@@ -44,8 +31,8 @@ public class Market {
 			double minCijena = 0;
 			double ukCijena = 0;
 			double prosjCijena = 0;
-			String MaxProizvod;
-			String MinProizvod;
+			String maxArtikal;
+			String minArtikal;
 
 			String artikal;
 			String proizvodjac;
@@ -67,7 +54,6 @@ public class Market {
 				if (maxCijena < cijena) {
 					maxCijena = cijena;
 					maxRow = rset.getRow();
-					System.out.println("Trenutni max Row je:" + maxRow);
 				}
 
 				if (rset.getRow() == 1) {
@@ -82,27 +68,20 @@ public class Market {
 			
 			prosjCijena = ukCijena / rowCount;
 
-			rset.absolute(maxRow);
-			MaxProizvod = rset.getString("artikal");
-			System.out
-					.println("proizvod sa najvecom cijenom je=" + MaxProizvod);
+			rset.absolute(maxRow); //Moves the cursor to the given row number in this ResultSet object.
+			maxArtikal = rset.getString("artikal");
+			System.out.println("Artikal sa najvecom cijenom je: " + maxArtikal);
 
 			rset.absolute(minRow);
-			MinProizvod = rset.getString("artikal");
-			System.out.println("proizvod sa najmanjom cijenom je="
-					+ MinProizvod);
-
+			minArtikal = rset.getString("artikal");
+			System.out.println("Artikal sa najmanjom cijenom je: " + minArtikal);
 			System.out.println();
-			System.out.println("Broj razlicitih sadržaja u marketu je: "
-					+ rowCount);
-			System.out.println("Ukupna količina svih proizvada u marketu je "
-					+ sumaKol);
-			System.out.println("Najveća cijena od svih proizvoda je "
-					+ maxCijena + "a taj proizvod je" + MaxProizvod);
-			System.out.println("Najmanja cijena od svih proizvoda je "
-					+ minCijena + "a taj proizvod je:" + MinProizvod);
-			System.out.println("Prosjecna cijena prozvoda je " + prosjCijena);
-
+			
+			System.out.println("Broj razlicitih sadržaja u marketu je: " + rowCount);
+			System.out.println("Ukupna količina svih artikala u marketu je " + sumaKol);
+			System.out.println("Najveća cijena od svih artikala je " + maxCijena + " a taj artikal je" + maxArtikal);
+			System.out.println("Najmanja cijena od svih artikala je " + minCijena + " a taj artikal je:" + minArtikal);
+			System.out.println("Prosjecna cijena artikla u marketu je " + prosjCijena);
 			System.out.println();
 
 		}
