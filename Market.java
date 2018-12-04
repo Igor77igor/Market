@@ -68,17 +68,17 @@ public class Market {
 
 			rset.absolute(maxRow); //Moves the cursor to the given row number in this ResultSet object.
 			maxArtikal = rset.getString("artikal");
-			System.out.println("Artikal sa najvecom cijenom je: " + maxArtikal);
+			System.out.println("Artikal sa najvecom cijenom je: " + maxArtikal + 
+					   " a cijena tog artikla je " + maxCijena);
 
 			rset.absolute(minRow);
 			minArtikal = rset.getString("artikal");
-			System.out.println("Artikal sa najmanjom cijenom je: " + minArtikal);
+			System.out.println("Artikal sa najmanjom cijenom je: " + minArtikal + 
+					   " a cijena tog artikla je " + minCijena);
 			System.out.println();
 			
 			System.out.println("Broj razlicitih sadržaja u marketu je: " + rowCount);
 			System.out.println("Ukupna količina svih artikala u marketu je " + sumaKol);
-			System.out.println("Najveća cijena od svih artikala je " + maxCijena + " a taj artikal je" + maxArtikal);
-			System.out.println("Najmanja cijena od svih artikala je " + minCijena + " a taj artikal je:" + minArtikal);
 			System.out.println("Prosjecna cijena artikla u marketu je " + prosjCijena);
 			System.out.println();
 
